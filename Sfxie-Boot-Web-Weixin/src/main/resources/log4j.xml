@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true" xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+    </appender>
+    <!--     debug级别日志打印配置		 -->
+ 	<appender name="debugRollingFile" class="com.sfxie.extension.logger.MyDailyRollingFileAppender">
+        <param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="DEBUG"></param>
+        <param name="append" value="true"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/debug/debug.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"></param>
+        </layout>
+        <!-- 级别过滤,在这里添加我们自定义的级别,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DEBUG#org.apache.log4j.Level" />
+			<param name="LevelMax" value="INFO#org.apache.log4j.Level" />
+		</filter>
+    </appender>
+	<!--     info级别日志打印配置		 -->
+ 	<appender name="infoRollingFile" class="com.sfxie.extension.logger.MyDailyRollingFileAppender">
+        <param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="INFO"></param>
+        <param name="append" value="true"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/info/info.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"></param>
+        </layout>
+        <!-- 级别过滤,在这里添加我们自定义的级别,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO#org.apache.log4j.Level" />
+			<param name="LevelMax" value="INFO#org.apache.log4j.Level" />
+		</filter>
+    </appender>
+    <!--     error级别日志打印配置		 -->
+    <appender name="errorRollingFile" class="com.sfxie.extension.logger.MyDailyRollingFileAppender">
+        <param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="ERROR"></param>
+        <param name="append" value="true"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/error/error.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"></param>
+        </layout>
+        <!-- 级别过滤,在这里添加我们自定义的级别,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR#org.apache.log4j.Level" />
+			<param name="LevelMax" value="ERROR#org.apache.log4j.Level" />
+		</filter>
+    </appender>
+    <!--     系统框架级别日志打印配置		 -->
+ 	<appender name="LOG.SYSTEM" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="SYSTEM"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/system/system.info.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="SYSTEM#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="SYSTEM#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+ 	<!--     controller级别日志打印配置		 -->
+ 	<appender name="LOG.CONTROLLER" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="CONTROLLER"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/controller/controller.error.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy/MM/dd HH:mm:ss} [%c] - %m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="CONTROLLER#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="CONTROLLER#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<!--     service级别日志打印配置		 -->
+ 	<appender name="LOG.SERVICE" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="SERVICE"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/service/service.error.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy/MM/dd HH:mm:ss} [%c] - %m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="SERVICE#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="SERVICE#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<!--     dao级别日志打印配置		 -->
+ 	<appender name="LOG.DAO" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="DAO"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/dao/dao.error.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy/MM/dd HH:mm:ss} [%c] - %m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="DAO#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="DAO#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<!--     业务日志(INFO级别)打印配置		 -->
+ 	<appender name="LOG.BUSINESS" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="BUSINESS"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/business/business.info.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy/MM/dd HH:mm:ss} [%c] - %m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="BUSINESS#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="BUSINESS#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<!--     业务日志(INFO级别)打印配置		 -->
+ 	<appender name="LOG.BUSINESS.ERROR" class="org.apache.log4j.DailyRollingFileAppender">
+ 		<param name="encoding" value="UTF-8"></param>
+        <param name="Threshold" value="BUSINESSERROR"></param>
+        <param name="ImmediateFlush" value="true"></param>
+        <param name="File" value="${LOG_PATH}/business/business.error.log"></param>
+        <param name="DatePattern" value="'.'yyyyMMdd'.log'"></param>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%m%n"></param>
+        </layout>
+		<!-- 级别过滤,在这里添加我们自定义的级别,注意#号不能少,配置只输出到本身级别的日志文件中 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="BUSINESSERROR#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="BUSINESSERROR#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<!-- 邮件提醒(INFO级别)-->
+	<appender name="LOG.MAIL.INFO" class="com.sfxie.extension.logger.level.mail.MailAppender">
+		<param name="from" value="tcl_golive@126.com" />
+		<!--多个邮件地址用逗号分割-->
+		<param name="to" value="940964471@qq.com" />
+		<param name="subject" value="零花钱" />
+		<param name="SMTPHost" value="smtp.126.com" />
+		<param name="SMTPUsername" value="tcl_golive@126.com" />
+		<param name="SMTPPassword" value="tcl_cms" />
+		<param name="senderPoolSize" value="2" />
+		<param name="maxSenderRetries" value="5" />
+		<triggeringPolicy class="com.sfxie.extension.logger.level.mail.MailTriggeringEventEvaluator$InfoMockTriggeringEventEvaluator" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<!-- 级别过滤 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="MAILINFO#com.sfxie.extension.logger.level.mail.MailLevel" />
+			<param name="LevelMax" value="MAILINFO#com.sfxie.extension.logger.level.mail.MailLevel" />
+		</filter>
+	</appender>
+	<!-- 邮件提醒(FATAL级别)-->
+	<appender name="LOG.MAIL.FATAL" class="com.sfxie.extension.logger.level.mail.MailAppender">
+		<param name="from" value="tcl_golive@126.com" />
+		<!--多个邮件地址用逗号分割-->
+		<param name="to" value="940964471@qq.com" />
+		<param name="subject" value="零花钱接口错误提醒" />
+		<param name="SMTPHost" value="smtp.126.com" />
+		<param name="SMTPUsername" value="tcl_golive@126.com" />
+		<param name="SMTPPassword" value="tcl_cms" />
+		<param name="senderPoolSize" value="2" />
+		<param name="maxSenderRetries" value="5" />
+		<triggeringPolicy class="com.sfxie.extension.logger.level.mail.MailTriggeringEventEvaluator$FatalMockTriggeringEventEvaluator" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<!-- 级别过滤 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="MAILERROR#com.sfxie.extension.logger.level.mail.MailLevel" />
+			<param name="LevelMax" value="MAILERROR#com.sfxie.extension.logger.level.mail.MailLevel" />
+		</filter>
+	</appender>
+	<!-- 邮件提醒(FATAL级别)-->
+	<appender name="LOG.CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d - %c -%-4r [%t] %-5p %x - %m%n" />
+        </layout>
+		<!-- 级别过滤 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="CONSOLE#com.sfxie.extension.logger.level.SystemLevel" />
+			<param name="LevelMax" value="CONSOLE#com.sfxie.extension.logger.level.SystemLevel" />
+		</filter>
+	</appender>
+	<logger name="java.sql">  
+        <level value="DEBUG"/>  
+    </logger>
+	<logger name="java.sql">  
+        <level value="DEBUG"/>  
+    </logger>
+  	<root>
+<!-- 	    <level value="DEBUG"/> -->
+	    <level value="INFO"/>
+	    <appender-ref ref="LOG.SYSTEM" />
+	    <appender-ref ref="LOG.CONTROLLER" />
+	    <appender-ref ref="LOG.SERVICE" />
+	    <appender-ref ref="LOG.DAO" />
+	    <appender-ref ref="LOG.BUSINESS" />
+	    <appender-ref ref="LOG.BUSINESS.ERROR" />
+<!-- 	    添加INFO级别邮件发送log -->
+	    <appender-ref ref="LOG.MAIL.INFO" />
+<!-- 	    添加FATAL级别邮件发送log -->
+	    <appender-ref ref="LOG.MAIL.FATAL" />
+	    <appender-ref ref="LOG.CONSOLE" />
+	    <appender-ref ref="debugRollingFile" />
+	    <appender-ref ref="infoRollingFile" />
+	    <appender-ref ref="errorRollingFile" />
+	    <appender-ref ref="console" />
+	</root>
+</log4j:configuration>

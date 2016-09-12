@@ -1,0 +1,45 @@
+spring.view.prefix: /jsp/
+spring.view.suffix: .jsp
+
+index: /index.jsp
+
+server.port: 8010
+server.contextPath: ${contextPath:/ace}
+
+
+logging.path: ${logPath:D:/temp/logs/web/weixin}
+  
+  
+############################################ dubbo.service.oa ############################################
+dubbo.service.cm.LLRService.register: oaRegistry
+dubbo.service.cm.LLRService.ref: LLRService
+############################################ dubbo.service.oa ############################################
+
+
+############################################ dubbo.service.oa ############################################
+dubbo.service.oa.CompanyService.register: oaRegistry
+dubbo.service.oa.CompanyService.ref: companyService
+dubbo.service.oa.UserService.register: oaRegistry
+dubbo.service.oa.UserService.ref: userService
+############################################ dubbo.service.oa ############################################
+
+
+############################################ dubbo.service.page ############################################
+############################################ dubbo.service.page ############################################
+#dubbo.address.zk: zookeeper://xsfcjy.oicp.net:2181
+#dubbo.address.zk: multicast://224.5.6.7:2181
+dubbo.port: 21883
+dubbo.provider.name: sfxie_oa
+#dubbo.address.zk: zookeeper://xsfcjy.oicp.net:2181
+#192.168.23.4:2181,192.168.23.4:2182,192.168.23.4:2183
+
+##############################################################
+dubbo.address.zk.testRegistry: zookeeper://xsfcjy.oicp.net:2181
+dubbo.registry.testRegistry.timeout: 10000
+
+dubbo.address.zk.oaRegistry: zookeeper://xsfcjy.oicp.net:2181
+dubbo.registry.oaRegistry.timeout: 10000
+##############################################################
+
+
+dubbo.filter.isEnabledOaAuthority: false  
