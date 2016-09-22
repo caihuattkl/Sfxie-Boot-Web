@@ -20,7 +20,7 @@ var settings = {
 		menu: [{
 			title: '微信基础配置',
 			id:'weixinbase',
-			icon: 'fa-desktop',
+			icon: 'fa-cogs',
 			submenu:[{
 				id:'weixinbase1',
 				href: 'jsp/weixin/jqgrid.html',
@@ -45,7 +45,7 @@ var settings = {
 		},{
 			title: '微信消息管理',
 			id:'weixinmessage',
-			icon: 'fa-desktop',
+			icon: 'fa-comment',
 			submenu:[{
 				id:'weixinmessage1',
 				href: 'http://www.baidu.com',
@@ -68,7 +68,7 @@ $.fn.aceMenu.addMenuItem('weixinbase',{
 	icon: 'fa-caret-right'
 });
 $.fn.aceMenu.addMenu({
-	title: '微信基础配置222',
-	id:'weixinbase222',
-	icon: 'fa-desktop'
+	title: '微信用户配置',
+	id:'userConfig',
+	icon: 'fa-user'
 });

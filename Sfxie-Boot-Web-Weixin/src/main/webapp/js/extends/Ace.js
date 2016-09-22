@@ -54,7 +54,7 @@
 					'		<li id="{id}" class="">'+
 					'			<a url="{submenuhref}" href="javascript:">'+
 					'				<i class="menu-icon fa {submenuicon}"></i>'+
-					'				<span style="color:red;">{submenutitle}</span>'+
+					'				<span>{submenutitle}</span>'+
 					'				{subMenuEndString}'+		
 					'			</a>'+
 					'		</li>';

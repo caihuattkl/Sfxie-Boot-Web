@@ -8,8 +8,9 @@ $.extend(Sfxie,{
 	Ace: {
 		Ui:{
 			aceSwitch: function( cellvalue, options, cell ) {
+				console.log(cellvalue,options,cell)
 				setTimeout(function(){
-					$(cell) .find('input[type=checkbox]')
+					$(cell).find('input[type=checkbox]')
 						.addClass('ace ace-switch ace-switch-5')
 						.after('<span class="lbl"></span>');
 				}, 0);
@@ -17,7 +18,7 @@ $.extend(Sfxie,{
 		}
 	},
 	JqGrid:{
-		/**
+		/**f
 		 * 获取jqgrid表格的配置信息
 		 * @param
 		 * 		configs
